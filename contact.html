@@ -21,12 +21,17 @@
     <link rel="stylesheet" href="css/ionicons.min.css">
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <!-- Add this line to include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
     
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+         crossorigin=""/>
   </head>
   <body class="goto-here">
 		<div class="py-1 bg-primary">
@@ -71,7 +76,7 @@
               </div>-->		
             </li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="/" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> <span>[0]</span></a></li>
 
@@ -81,12 +86,18 @@
 	  </nav>
     <!-- END nav -->
 
-    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap hero-bread" style="background-image: url('images/freebeachcoconut.jpg'); 
+        background-size: cover; 
+        background-position: center center; 
+        position: relative;
+        height: 400px; /* Reduced height */
+        overflow: hidden;">
+      <div class="overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.1);"></div>
       <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" style="min-height: 400px;">
           <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact us</span></p>
-            <h1 class="mb-0 bread">Contact us</h1>
+            <p class="breadcrumbs" style="color: #222; font-weight: 500;"><span class="mr-2"><a href="index.html" style="color: #222;">Home</a></span> <span style="color: #222;">Contact us</span></p>
+            <h1 class="mb-0 bread" style="color: #222; font-weight: 700; text-shadow: 2px 2px 4px rgba(255,255,255,0.7);">Contact us</h1>
           </div>
         </div>
       </div>
@@ -140,7 +151,7 @@
           </div>
 
           <div class="col-md-6 d-flex">
-          	<div id="map" class="bg-white"></div>
+          	<div id="map" class="bg-white" style="width: 100%; height: 500px;"></div>
           </div>
         </div>
       </div>
@@ -235,8 +246,20 @@
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+       crossorigin=""></script>
+  <script>
+    var map = L.map('map').setView([22.1790, -159.4973], 13); // Coordinates for Kauai
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    
+    // Add a marker
+    var marker = L.marker([22.1790, -159.4973]).addTo(map);
+    marker.bindPopup("<b>Good & Green</b><br>North Shore, Kauai, Hawaii").openPopup();
+  </script>
   <script src="js/main.js"></script>
     
   </body>
